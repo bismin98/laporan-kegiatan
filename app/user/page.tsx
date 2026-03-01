@@ -287,10 +287,10 @@ export default function UserPage() {
           </div>
 
           {/* Download Excel Section */}
-          <div className="mb-6 rounded-2xl border-2 p-4 shadow-xl bg-gradient-to-br from-fuchsia-100 via-cyan-100 to-pink-100 border-fuchsia-300">
-            <div className="flex flex-col items-start gap-4 lg:flex-row lg:items-center">
-              <div className="shrink-0 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-400 via-cyan-400 to-pink-400 p-2 shadow-lg">
+          <div className="mb-6 rounded-2xl border-2 p-4 shadow-xl bg-linear-to-br from-fuchsia-100 via-cyan-100 to-pink-100 border-fuchsia-300">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+              <div className="flex items-center gap-2 mb-2 lg:mb-0">
+                <span className="inline-flex items-center justify-center rounded-full bg-linear-to-br from-fuchsia-400 via-cyan-400 to-pink-400 p-2 shadow-lg">
                   <Icon icon="mdi:file-download-outline" width={24} height={24} className="text-white" />
                 </span>
                 <div>
@@ -302,9 +302,8 @@ export default function UserPage() {
                   </p>
                 </div>
               </div>
-              
-              <div className="flex w-full flex-col gap-3 sm:flex-row lg:ml-auto lg:w-auto">
-                <div className="flex gap-3 w-full sm:w-auto">
+              <div className="flex flex-col gap-3 w-full lg:flex-row lg:ml-auto lg:w-auto">
+                <div className="flex flex-col gap-3 w-full sm:flex-row">
                   <div className="relative w-full sm:w-40">
                     <Icon icon="mdi:calendar-month-outline" className="absolute left-3 top-1/2 -translate-y-1/2 text-fuchsia-400 pointer-events-none" width={20} height={20} />
                     <select
@@ -321,7 +320,7 @@ export default function UserPage() {
                     </select>
                     <Icon icon="mdi:chevron-down" className="absolute right-3 top-1/2 -translate-y-1/2 text-fuchsia-400 pointer-events-none" width={18} height={18} />
                   </div>
-                  <div className="relative min-w-fit w-auto">
+                  <div className="relative w-full sm:w-auto">
                     <Icon icon="mdi:calendar-outline" className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400 pointer-events-none" width={20} height={20} />
                     <select
                       value={selectedYear}
@@ -340,11 +339,10 @@ export default function UserPage() {
                     </span>
                   </div>
                 </div>
-
                 <button
                   onClick={handleExportToExcel}
                   disabled={!selectedMonth || !selectedYear}
-                  className="flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 px-6 py-2 text-sm font-bold text-white shadow-lg transition hover:from-fuchsia-700 hover:to-cyan-600 disabled:cursor-not-allowed disabled:from-slate-400 disabled:to-slate-400"
+                  className="flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-linear-to-r from-fuchsia-500 to-cyan-500 px-6 py-2 text-sm font-bold text-white shadow-lg transition hover:from-fuchsia-700 hover:to-cyan-600 disabled:cursor-not-allowed disabled:from-slate-400 disabled:to-slate-400"
                 >
                   <Icon icon="mdi:file-download-outline" width={20} height={20} className="text-white" />
                   Download Excel
