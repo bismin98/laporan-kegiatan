@@ -53,11 +53,33 @@ export default function AdminPage() {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFoto(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+      if (file.type === 'image/heic' || file.name.toLowerCase().endsWith('.heic')) {
+        import('heic2any').then(heic2any => {
+          const reader = new FileReader();
+          reader.onload = async () => {
+            try {
+              const conversionResult = await heic2any.default({
+                blob: new Blob([reader.result as ArrayBuffer]),
+                toType: 'image/jpeg',
+                quality: 0.8,
+              });
+              const convertedBlob = Array.isArray(conversionResult) ? conversionResult[0] : conversionResult;
+              const url = URL.createObjectURL(convertedBlob);
+              setFoto(url);
+            } catch (err) {
+              setFoto('');
+              alert('Gagal konversi HEIC. Silakan upload file JPEG/PNG.');
+            }
+          };
+          reader.readAsArrayBuffer(file);
+        });
+      } else {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFoto(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      }
     }
   };
 
@@ -211,7 +233,7 @@ export default function AdminPage() {
                 <input
                   type="file"
                   id="foto"
-                  accept="image/*"
+                  accept="image/jpeg,image/jpg,image/png,image/heic"
                   onChange={handleImageUpload}
                   className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-slate-700 outline-none transition file:mr-3 file:rounded-lg file:border-0 file:bg-fuchsia-100 file:px-3 file:py-1.5 file:text-fuchsia-700 focus:border-fuchsia-400 focus:ring-2 focus:ring-fuchsia-200"
                   required
