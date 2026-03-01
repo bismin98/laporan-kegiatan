@@ -387,11 +387,11 @@ export default function UserPage() {
                 <div
                   key={activity.id}
                   className={`overflow-hidden rounded-xl border-2 transition-shadow duration-300 hover:shadow-2xl animate-fade-slide-in font-sans cursor-pointer w-full max-w-xs mx-auto text-sm ${[
-                    'bg-gradient-to-br from-pink-100 via-fuchsia-100 to-cyan-100 border-fuchsia-300',
-                    'bg-gradient-to-br from-cyan-100 via-indigo-100 to-pink-100 border-cyan-300',
-                    'bg-gradient-to-br from-yellow-100 via-orange-100 to-pink-100 border-yellow-300',
-                    'bg-gradient-to-br from-green-100 via-teal-100 to-cyan-100 border-green-300',
-                    'bg-gradient-to-br from-purple-100 via-fuchsia-100 to-blue-100 border-purple-300',
+                    'bg-linear-to-br from-pink-100 via-fuchsia-100 to-cyan-100 border-fuchsia-300',
+                    'bg-linear-to-br from-cyan-100 via-indigo-100 to-pink-100 border-cyan-300',
+                    'bg-linear-to-br from-yellow-100 via-orange-100 to-pink-100 border-yellow-300',
+                    'bg-linear-to-br from-green-100 via-teal-100 to-cyan-100 border-green-300',
+                    'bg-linear-to-br from-purple-100 via-fuchsia-100 to-blue-100 border-purple-300',
                   ][idx % 5]}`}
                   style={{ animationDelay: `${idx * 60}ms` }}
                   onClick={() => setSelectedActivity(activity)}

@@ -248,7 +248,7 @@ export default function AdminPage() {
           {/* Activities List Section */}
           <div className="rounded-3xl border border-white/40 bg-white/95 p-6 shadow-2xl">
             <div className="mb-6 flex items-center gap-3">
-              <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-400 via-cyan-400 to-pink-400 p-2 shadow-lg">
+              <span className="inline-flex items-center justify-center rounded-full bg-linear-to-br from-fuchsia-400 via-cyan-400 to-pink-400 p-2 shadow-lg">
                 <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a1 1 0 0 1 1 1v14.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 1.414-1.414L11 17.586V3a1 1 0 0 1 1-1Z"/></svg>
               </span>
               <h2 className="text-2xl font-extrabold text-fuchsia-700 drop-shadow tracking-wide">Daftar Kegiatan</h2>
@@ -266,12 +266,12 @@ export default function AdminPage() {
                     <div
                       key={activity.id}
                       style={{ animationDelay: `${idx * 60}ms` }}
-                      className={`overflow-hidden rounded-lg border-2 transition-shadow duration-300 hover:shadow-2xl animate-fade-slide-in font-sans cursor-pointer w-full text-xs flex flex-col justify-between min-w-0 sm:min-w-[140px] sm:max-w-[170px] aspect-square ${[
-                        'bg-gradient-to-br from-pink-100 via-fuchsia-100 to-cyan-100 border-fuchsia-300',
-                        'bg-gradient-to-br from-cyan-100 via-indigo-100 to-pink-100 border-cyan-300',
-                        'bg-gradient-to-br from-yellow-100 via-orange-100 to-pink-100 border-yellow-300',
-                        'bg-gradient-to-br from-green-100 via-teal-100 to-cyan-100 border-green-300',
-                        'bg-gradient-to-br from-purple-100 via-fuchsia-100 to-blue-100 border-purple-300',
+                      className={`overflow-hidden rounded-lg border-2 transition-shadow duration-300 hover:shadow-2xl animate-fade-slide-in font-sans cursor-pointer w-full text-xs flex flex-col justify-between min-w-0 sm:min-w-35 sm:max-w-42.5 aspect-square ${[
+                        'bg-linear-to-br from-pink-100 via-fuchsia-100 to-cyan-100 border-fuchsia-300',
+                        'bg-linear-to-br from-cyan-100 via-indigo-100 to-pink-100 border-cyan-300',
+                        'bg-linear-to-br from-yellow-100 via-orange-100 to-pink-100 border-yellow-300',
+                        'bg-linear-to-br from-green-100 via-teal-100 to-cyan-100 border-green-300',
+                        'bg-linear-to-br from-purple-100 via-fuchsia-100 to-blue-100 border-purple-300',
                       ][idx % 5]}`}
                       onClick={() => setSelectedActivity(activity)}
                       tabIndex={0}
