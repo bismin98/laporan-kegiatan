@@ -52,22 +52,23 @@ export async function PATCH(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'ID is required' }, { status: 400 });
     }
     const body = await request.json();
-    let updatedActivity: Activity | null = null;
+    let updatedActivity: Activity | undefined = undefined;
     let activities = await readActivities();
     let found = false;
     activities = activities.map((activity) => {
       if (activity.id === id) {
         found = true;
-        updatedActivity = {
+        const updated = {
           ...activity,
           ...body,
           id: activity.id,
           createdAt: activity.createdAt,
         };
-        return updatedActivity;
+        updatedActivity = updated;
+        return updated;
       }
       return activity;
-    });
+    }) as Activity[];
     if (!found || !updatedActivity) {
       return NextResponse.json({ success: false, error: 'Activity not found' }, { status: 404 });
     }
