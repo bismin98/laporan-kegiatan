@@ -171,10 +171,15 @@ export default function UserPage() {
       // Add image if exists
       if (activity.foto) {
         try {
+          // Detect image type from base64
+          let extension = 'png';
+          if (activity.foto.startsWith('data:image/jpeg')) extension = 'jpeg';
+          else if (activity.foto.startsWith('data:image/jpg')) extension = 'jpg';
+          else if (activity.foto.startsWith('data:image/png')) extension = 'png';
+          else if (activity.foto.startsWith('data:image/heic')) extension = 'jpeg'; // HEIC sudah dikonversi ke JPEG
+
           // Convert base64 to buffer
           const base64Data = activity.foto.split(',')[1] || activity.foto;
-          
-          // Convert base64 to binary string
           const binaryString = atob(base64Data);
           const bytes = new Uint8Array(binaryString.length);
           for (let i = 0; i < binaryString.length; i++) {
@@ -184,7 +189,7 @@ export default function UserPage() {
           // Add image to workbook
           const imageId = workbook.addImage({
             buffer: bytes as any,
-            extension: 'png',
+            extension,
           });
 
           // Add image to worksheet
